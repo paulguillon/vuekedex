@@ -26,14 +26,23 @@ export default {
   }),
   mutations: {},
   actions: {
+    async getPokemonList(state, { offset, limit }) {
+      let filtersString = "";
+
+      if (offset) filtersString = "?offset=" + offset;
+      if (limit)
+        filtersString += offset ? "&limit=" + limit : "?limit=" + limit;
+
+      const { data } = await axios.get(
+        "https://pokeapi.co/api/v2/pokemon" + filtersString
+      );
+      return data;
+    },
     async getPokemon(state, id) {
       const { data } = await axios.get(
         "https://pokeapi.co/api/v2/pokemon/" + id
       );
-      const pokemon = data;
-      pokemon.name =
-        pokemon.name.charAt(0).toUpperCase() + pokemon.name.substring(1);
-      return pokemon;
+      return data;
     },
   },
 };

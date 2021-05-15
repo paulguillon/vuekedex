@@ -1,18 +1,24 @@
 <template>
   <div>
     <h1 class="text-6xl mb-20">All Pokemons</h1>
-    <div v-if="pokemons" class="grid grid-cols-9 gap-4 justify-items-center">
+    <div
+      v-if="pokemonList"
+      class="flex flex-row flex-wrap gap-4 justify-evenly"
+    >
       <PokemonCard
-        v-for="pokemon in pokemons"
+        v-for="pokemon in pokemonList"
         :key="pokemon.name"
         :pokemon="pokemon"
         class="
           bg-red-200
-          p-5
           cursor-pointer
           shadow-md
           hover:shadow-lg
           rounded-lg
+          w-1/4
+          p-5
+          flex flex-row flex-wrap
+          justify-evenly
         "
       />
     </div>
@@ -22,6 +28,7 @@
 <script>
 import { reactive, toRefs, watchEffect } from "vue";
 import PokemonCard from "@/components/PokemonCard";
+import { useStore } from "vuex";
 
 export default {
   name: "PokemonList",
@@ -29,16 +36,17 @@ export default {
     PokemonCard,
   },
   setup() {
+    const store = useStore();
+
     const state = reactive({
-      pokemons: [],
+      pokemonList: [],
     });
 
     watchEffect(async () => {
-      const response = await fetch(
-        "https://pokeapi.co/api/v2/pokemon?limit=151"
-      );
-      const data = await response.json();
-      state.pokemons = data.results;
+      const { results } = await store.dispatch("pokemon/getPokemonList", {
+        limit: 9,
+      });
+      state.pokemonList = results;
     });
 
     return { ...toRefs(state) };

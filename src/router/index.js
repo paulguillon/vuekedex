@@ -1,33 +1,31 @@
-import {
-  createRouter,
-  createWebHistory
-} from 'vue-router'
+import { createRouter, createWebHistory } from "vue-router";
 
-import Home from '../views/Home.vue'
-import PokemonList from '../views/PokemonList.vue'
-import PokemonDetails from '../views/PokemonDetails.vue'
+import Home from "../views/Home.vue";
+import PokemonList from "../views/PokemonList.vue";
+import PokemonDetails from "../views/PokemonDetails.vue";
 
-const routes = [{
-    path: '/',
-    name: 'Home',
-    component: Home
+const routes = [
+  {
+    path: "/",
+    name: "Home",
+    component: Home,
   },
   {
-    path: '/pokemon',
-    name: 'PokemonList',
+    path: "/pokemon",
+    name: "PokemonList",
     component: PokemonList,
-    props: true
+    props: true,
   },
   {
-    path: '/pokemon/:id',
-    name: 'PokemonDetails',
+    path: "/pokemon/:id",
+    name: "PokemonDetails",
     component: PokemonDetails,
-  }
-]
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

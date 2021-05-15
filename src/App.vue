@@ -20,10 +20,10 @@
   a {
     font-weight: bold;
     color: #2c3e50;
-  }
 
-  a.router-link-exact-active {
-    color: #da0000;
+    &.router-link-exact-active {
+      color: #da0000;
+    }
   }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div v-if="thisPokemon" class="flex flex-col justify-items-center w-64">
     <p class="text-sm text-gray-500">{{ thisPokemon.id }}</p>
-    <p class="text-lg">{{ thisPokemon.name }}</p>
+    <p class="text-lg capitalize">{{ thisPokemon.name }}</p>
     <img
       :src="
         thisPokemon.sprites.other.dream_world.front_default ??
@@ -15,7 +15,14 @@
       <li
         v-for="{ index, type } in thisPokemon.types"
         :key="index"
-        class="rounded-full text-white font-bold border-2 border-white shadow-md"
+        class="
+          rounded-full
+          text-white
+          font-bold
+          border-2 border-white
+          shadow-md
+          capitalize
+        "
         :style="{ backgroundColor: typesColors[type.name] }"
       >
         {{ type.name }}
@@ -25,6 +32,7 @@
       <li
         v-for="{ base_stat, effort, stat } in thisPokemon.stats"
         :key="stat.name"
+        class="normal-case"
       >
         {{ `${stat.name}: ${base_stat} ${effort}` }}
       </li>
