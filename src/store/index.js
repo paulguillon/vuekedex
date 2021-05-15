@@ -1,12 +1,10 @@
-import { createStore } from 'vuex'
+import { createStore } from "vuex";
+
+//Modules
+import pokemon from "./modules/pokemon";
 
 export default createStore({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
   modules: {
-  }
-})
+    pokemon,
+  },
+});
