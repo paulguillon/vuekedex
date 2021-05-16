@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1 class="text-6xl mb-20">All Pokemons</h1>
+  <section class="pokemonList">
+    <h1 class="text-6xl mb-20">Pokedex</h1>
     <div
       v-if="pokemonList"
       class="flex flex-row flex-wrap gap-4 justify-evenly"
@@ -22,7 +22,7 @@
         "
       />
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

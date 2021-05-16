@@ -13,7 +13,7 @@
       loading="lazy"
     />
     <div class="flex flex-col justify-center">
-      <p class="text-sm text-gray-500">{{ thisPokemon.id }}</p>
+      <p class="text-sm text-gray-500">National : #{{ thisPokemon.id }}</p>
       <p class="text-lg capitalize">{{ thisPokemon.name }}</p>
       <ul class="flex flex-row justify-center">
         <li
